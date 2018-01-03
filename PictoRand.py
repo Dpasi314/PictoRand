@@ -5,17 +5,6 @@ from tweepy import models as m
 from PIL import Image
 DEBUG = False
 def initTwitter():
-    @classmethod
-    def parse(cls, api, raw):
-        status = cls.first_parse(api, raw)
-        setattr(status, 'json', json.dumps(raw))
-        return status
-    m.Status.first_parse = tweepy.models.Status.parse
-    m.Status.parse = parse
-
-    m.User.first_parse = tweepy.models.User.parse
-    m.User.parse = parse
-
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_secret)
 
